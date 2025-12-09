@@ -11,9 +11,11 @@
 
 **¿Quieres probar la app sin compilar?** Descarga la APK directamente:
 
-[⬇️ Descargar APK v1.0.0](https://github.com/DonGeeo87/Actividades-Diarias/releases/download/v1.0.0/app-debug.apk)
+[⬇️ Descargar APK v1.1.0](https://github.com/DonGeeo87/Actividades-Diarias/releases/download/v1.1.0/app-debug.apk)
 
 > 💡 **Nota**: Esta es una versión debug. Para instalarla en tu dispositivo Android, necesitas habilitar "Orígenes desconocidos" en la configuración de seguridad.
+> 
+> 📦 **Versiones anteriores**: [v1.0.0](https://github.com/DonGeeo87/Actividades-Diarias/releases/download/v1.0.0/app-debug.apk)
 
 ## 📖 Descripción
 
