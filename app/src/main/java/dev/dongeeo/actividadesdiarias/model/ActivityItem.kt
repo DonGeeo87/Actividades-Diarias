@@ -22,5 +22,6 @@ data class ActivityItem(
     val title: String,        // Título de la actividad (obligatorio)
     val description: String,  // Descripción opcional
     val date: String,         // Fecha formateada
-    val time: String          // Hora formateada
+    val time: String,         // Hora formateada
+    val isCompleted: Boolean = false  // Estado de completado de la actividad
 )

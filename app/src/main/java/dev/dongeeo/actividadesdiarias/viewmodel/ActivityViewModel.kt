@@ -1,13 +1,12 @@
 package dev.dongeeo.actividadesdiarias.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.dongeeo.actividadesdiarias.data.UserPreferencesRepository
 import dev.dongeeo.actividadesdiarias.model.ActivityItem
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -30,14 +29,9 @@ class ActivityViewModel(
     private val userPreferencesRepository: UserPreferencesRepository  // Repositorio para guardar datos del usuario
 ) : ViewModel() {
 
-    // LISTA DE ACTIVIDADES
-    // MutableStateFlow: Lista mutable que notifica cambios automáticamente
-    // Se inicializa vacía: emptyList()
-    private val _activities = MutableStateFlow<List<ActivityItem>>(emptyList())
-    
-    // StateFlow público: Solo lectura, las pantallas observan este flujo
-    // Cuando _activities cambia, las pantallas se actualizan automáticamente
-    val activities: StateFlow<List<ActivityItem>> = _activities.asStateFlow()
+    // LISTA DE ACTIVIDADES (LiveData para cumplir el requisito)
+    private val _activities = MutableLiveData<List<ActivityItem>>(emptyList())
+    val activities: LiveData<List<ActivityItem>> = _activities
     
     // NOMBRE DEL USUARIO
     // Flujo que emite el nombre guardado (puede ser null si no se ha configurado)
@@ -73,8 +67,8 @@ class ActivityViewModel(
             )
             
             // Agregar la nueva actividad al final de la lista
-            // El operador + crea una nueva lista con el elemento adicional
-            _activities.value = _activities.value + newItem
+            val current = _activities.value.orEmpty()
+            _activities.value = current + newItem
         }
     }
 
@@ -87,7 +81,26 @@ class ActivityViewModel(
      */
     fun deleteActivity(id: String) {
         // Filtrar la lista: mantener solo las actividades cuyo ID no coincida
-        _activities.value = _activities.value.filter { it.id != id }
+        val current = _activities.value.orEmpty()
+        _activities.value = current.filter { it.id != id }
+    }
+    
+    /**
+     * MARCAR/DESMARCAR ACTIVIDAD COMO COMPLETADA
+     * 
+     * Cambia el estado de completado de una actividad.
+     * 
+     * @param id: Identificador único de la actividad
+     */
+    fun toggleActivityCompleted(id: String) {
+        val current = _activities.value.orEmpty()
+        _activities.value = current.map { activity ->
+            if (activity.id == id) {
+                activity.copy(isCompleted = !activity.isCompleted)
+            } else {
+                activity
+            }
+        }
     }
     
     /**

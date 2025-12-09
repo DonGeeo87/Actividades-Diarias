@@ -49,9 +49,10 @@ Este proyecto es ideal para:
 
 ### 📝 Gestión de Actividades
 - **Registro rápido**: Agrega actividades con título y descripción opcional
-- **Vista de lista**: Visualiza todas tus actividades en tarjetas elegantes
-- **Expansión de tarjetas**: Toca una tarjeta para ver más detalles
-- **Estado vacío**: Mensaje motivacional cuando no hay actividades
+- **Vista de lista**: Visualiza todas tus actividades usando RecyclerView con adaptador
+- **Marcar como completado**: Marca actividades como hechas para ir despejando la lista
+- **Actualización en tiempo real**: La lista se actualiza automáticamente con LiveData
+- **Estado vacío**: Mensaje cuando no hay actividades
 
 ### 🎭 Animaciones
 - **Entrada escalonada**: Las tarjetas aparecen una por una con efecto fade-in
@@ -69,12 +70,21 @@ Este proyecto utiliza las tecnologías más modernas del ecosistema Android:
 
 ### Arquitectura
 - **MVVM (Model-View-ViewModel)**: Patrón arquitectónico para separar lógica y UI
-- **StateFlow**: Para manejo reactivo del estado
-- **Navigation Compose**: Navegación entre pantallas
+- **LiveData**: Para manejo reactivo del estado (cumple requisitos del módulo)
+- **Fragments**: Implementación con Fragment Factory y Bundles
+- **Navigation Component**: Navegación entre Fragments
 
 ### Almacenamiento
-- **DataStore Preferences**: Almacenamiento moderno y asíncrono (reemplaza SharedPreferences)
+- **DataStore Preferences**: Almacenamiento moderno y asíncrono para el nombre del usuario
+- **LiveData en ViewModel**: Las actividades se gestionan con LiveData para actualización reactiva
 - **Estado en memoria**: Las actividades se guardan en el ViewModel durante la sesión
+
+### Componentes Android
+- **Fragments**: Implementación con RegisterFragment y ListFragment
+- **RecyclerView**: Lista eficiente con ListAdapter y DiffUtil
+- **Intents**: Navegación entre Activities con paso de datos mediante Bundles
+- **Ciclo de vida**: Manejo correcto de onCreate, onStart, onResume, etc.
+- **Permisos**: Gestión de permisos sensibles (notificaciones) con Activity Result API
 
 ### Librerías Principales
 ```gradle
