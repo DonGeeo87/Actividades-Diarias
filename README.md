@@ -7,6 +7,14 @@
 ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpack-compose&logoColor=white)
 ![Material Design](https://img.shields.io/badge/Material%20Design-757575?style=for-the-badge&logo=material-design&logoColor=white)
 
+## 📥 Descarga Directa
+
+**¿Quieres probar la app sin compilar?** Descarga la APK directamente:
+
+[⬇️ Descargar APK v1.0.0](https://github.com/DonGeeo87/Actividades-Diarias/releases/download/v1.0.0/app-debug.apk)
+
+> 💡 **Nota**: Esta es una versión debug. Para instalarla en tu dispositivo Android, necesitas habilitar "Orígenes desconocidos" en la configuración de seguridad.
+
 ## 📖 Descripción
 
 **Actividades Diarias** es una aplicación móvil desarrollada en Android que te permite registrar, visualizar y gestionar tus actividades del día a día de forma sencilla e intuitiva. 
