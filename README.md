@@ -1,11 +1,11 @@
 # 📱 Actividades Diarias
 
-> Una aplicación Android moderna y elegante para registrar y gestionar tus actividades diarias, construida con Jetpack Compose y Material Design 3.
+> Una aplicación Android moderna y elegante para registrar y gestionar tus actividades diarias, construida con Fragments, RecyclerView y Material Design 3.
 
 ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white)
-![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpack-compose&logoColor=white)
 ![Material Design](https://img.shields.io/badge/Material%20Design-757575?style=for-the-badge&logo=material-design&logoColor=white)
+![MVVM](https://img.shields.io/badge/MVVM-Architecture-FF6B6B?style=for-the-badge)
 
 ## 📥 Descarga Directa
 
@@ -20,44 +20,56 @@
 **Actividades Diarias** es una aplicación móvil desarrollada en Android que te permite registrar, visualizar y gestionar tus actividades del día a día de forma sencilla e intuitiva. 
 
 La app está diseñada con un enfoque en la experiencia del usuario, ofreciendo:
-- ✨ Interfaz moderna y atractiva
-- 🎨 Animaciones fluidas y microinteracciones
+- ✨ Interfaz moderna y atractiva con Material Components
+- 🎨 Diseño limpio siguiendo el sistema 8dp grid
 - 👤 Personalización con tu nombre
 - 📝 Registro rápido de actividades
-- 🎯 Diseño Material You 2025
+- 🎯 Material Design 3 con tema personalizado
+- ✅ Marcar actividades como completadas
 
 ## 🎯 ¿Para quién es este proyecto?
 
 Este proyecto es ideal para:
 - 👨‍💻 **Estudiantes de programación** que quieren aprender Android moderno
 - 🎓 **Desarrolladores trainee** que buscan ejemplos de buenas prácticas
-- 📚 **Aprendices de Kotlin y Compose** que necesitan un proyecto de referencia
+- 📚 **Aprendices de Kotlin y Android** que necesitan un proyecto de referencia
 - 🔍 **Cualquier persona** interesada en ver cómo se construye una app Android profesional
+- 🎓 **Estudiantes de bootcamps** que necesitan cumplir requisitos específicos de arquitectura
 
 ## ✨ Características Principales
 
 ### 🎨 Interfaz de Usuario
 - **Material Design 3**: Diseño siguiendo las últimas guías de Material You
-- **Animaciones fluidas**: Transiciones suaves y microinteracciones que mejoran la experiencia
-- **Tema personalizado**: Paleta de colores azul y verde menta
-- **Modo claro**: Optimizado para una experiencia visual agradable
+- **Material Components**: Uso de MaterialButton, MaterialToolbar, TextInputLayout
+- **Sistema 8dp Grid**: Espaciado consistente y profesional
+- **Tema personalizado**: Paleta de colores azul (#4A90E2) y verde menta (#50E3C2)
+- **Fondo cálido**: Color #F9FAFB para mejor experiencia visual
+- **Tarjetas modernas**: Esquinas redondeadas (16dp) y elevación suave
 
 ### 👋 Personalización
 - **Pantalla de bienvenida**: La app te saluda y pide tu nombre la primera vez
-- **Saludo personalizado**: El nombre se muestra en la pantalla principal
-- **Persistencia de datos**: Tu nombre se guarda y se mantiene entre sesiones
+- **Saludo personalizado**: El nombre se muestra en la pantalla principal (28sp, bold)
+- **Persistencia de datos**: Tu nombre se guarda con DataStore y se mantiene entre sesiones
 
 ### 📝 Gestión de Actividades
 - **Registro rápido**: Agrega actividades con título y descripción opcional
-- **Vista de lista**: Visualiza todas tus actividades usando RecyclerView con adaptador
-- **Marcar como completado**: Marca actividades como hechas para ir despejando la lista
+- **Vista de lista**: Visualiza todas tus actividades usando RecyclerView con ListAdapter
+- **Marcar como completado**: Marca actividades como hechas con checkbox (texto tachado)
 - **Actualización en tiempo real**: La lista se actualiza automáticamente con LiveData
-- **Estado vacío**: Mensaje cuando no hay actividades
+- **Estado vacío mejorado**: Mensaje ilustrado cuando no hay actividades
 
-### 🎭 Animaciones
-- **Entrada escalonada**: Las tarjetas aparecen una por una con efecto fade-in
-- **Expansión suave**: Las tarjetas se expanden con animación spring
-- **Transiciones**: Navegación fluida entre pantallas
+### 🏗️ Arquitectura
+- **Fragments**: ListFragment y RegisterFragment con método factory
+- **RecyclerView**: Lista eficiente con ListAdapter y DiffUtil
+- **LiveData**: Manejo reactivo del estado (cumple requisitos del módulo)
+- **MVVM**: Separación clara de responsabilidades
+- **Navigation Component**: Navegación entre Fragments
+- **Intents**: Navegación entre Activities con paso de datos mediante Bundles
+
+### 🔐 Permisos y Ciclo de Vida
+- **Permisos sensibles**: Gestión de permisos de almacenamiento usando Activity Result API
+- **Ciclo de vida**: Manejo correcto de onCreate, onStart, onResume, onDestroyView
+- **Lifecycle-aware**: Componentes que respetan el ciclo de vida de Activities y Fragments
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -65,14 +77,15 @@ Este proyecto utiliza las tecnologías más modernas del ecosistema Android:
 
 ### Lenguaje y Framework
 - **Kotlin 2.0.21**: Lenguaje de programación moderno y seguro
-- **Jetpack Compose**: Framework declarativo para construir UIs
-- **Material 3**: Sistema de diseño de Google
+- **Material Components**: Componentes Material Design nativos
+- **Material Design 3**: Sistema de diseño de Google
 
 ### Arquitectura
 - **MVVM (Model-View-ViewModel)**: Patrón arquitectónico para separar lógica y UI
 - **LiveData**: Para manejo reactivo del estado (cumple requisitos del módulo)
 - **Fragments**: Implementación con Fragment Factory y Bundles
 - **Navigation Component**: Navegación entre Fragments
+- **ViewModelFactory**: Inyección de dependencias para ViewModels
 
 ### Almacenamiento
 - **DataStore Preferences**: Almacenamiento moderno y asíncrono para el nombre del usuario
@@ -84,28 +97,29 @@ Este proyecto utiliza las tecnologías más modernas del ecosistema Android:
 - **RecyclerView**: Lista eficiente con ListAdapter y DiffUtil
 - **Intents**: Navegación entre Activities con paso de datos mediante Bundles
 - **Ciclo de vida**: Manejo correcto de onCreate, onStart, onResume, etc.
-- **Permisos**: Gestión de permisos sensibles (notificaciones) con Activity Result API
+- **Permisos**: Gestión de permisos sensibles (almacenamiento) con Activity Result API
 
 ### Librerías Principales
 ```gradle
-- androidx.compose.bom:2024.12.01
-- androidx.navigation:navigation-compose:2.8.4
-- androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6
+- androidx.navigation:navigation-fragment:2.8.4
+- androidx.lifecycle:lifecycle-viewmodel:2.8.6
 - androidx.datastore:datastore-preferences:1.1.1
+- com.google.android.material:material:1.12.0
+- androidx.recyclerview:recyclerview:1.3.2
 ```
 
 ## 📸 Capturas de Pantalla
 
 > 💡 **Nota para estudiantes**: Las capturas de pantalla muestran cómo se ve la app en un dispositivo real. Si quieres agregar las tuyas, toma screenshots desde Android Studio o un dispositivo físico.
 
-### Pantalla de Bienvenida
-La primera vez que abres la app, te pide tu nombre con una animación suave.
+### Pantalla Principal (ListFragment)
+Lista de actividades con saludo personalizado, TopBar con botón de información, y FAB para agregar nuevas actividades.
 
-### Pantalla Principal
-Lista de actividades con saludo personalizado y botón flotante para agregar nuevas.
+### Formulario de Registro (RegisterFragment)
+Interfaz simple y clara con Material Components para agregar nuevas actividades.
 
-### Formulario de Registro
-Interfaz simple y clara para agregar nuevas actividades.
+### Pantalla Acerca de (AboutActivity)
+Demuestra el uso de Intents explícitos y el manejo de permisos sensibles.
 
 ## 🚀 Instalación y Configuración
 
@@ -164,10 +178,15 @@ Antes de comenzar, asegúrate de tener instalado:
 3. Presiona "Guardar actividad"
 4. La actividad aparecerá en tu lista
 
-### Ver Detalles de una Actividad
-1. En la lista principal, toca cualquier tarjeta de actividad
-2. La tarjeta se expandirá mostrando la descripción completa
-3. Toca nuevamente para contraerla
+### Marcar como Completado
+1. En la lista principal, marca el checkbox de cualquier actividad
+2. El texto se tachará automáticamente
+3. La lista se actualiza en tiempo real gracias a LiveData
+
+### Ver Información de la App
+1. Toca el icono de información (ℹ️) en el TopBar azul
+2. Se abrirá AboutActivity (demuestra uso de Intents)
+3. Se solicitará permiso de almacenamiento (demuestra manejo de permisos)
 
 ## 📁 Estructura del Proyecto
 
@@ -187,23 +206,13 @@ ActividadesDiarias/
 │           │   ├── model/                         # Modelos de datos
 │           │   │   └── ActivityItem.kt            # Estructura de una actividad
 │           │   │
-│           │   ├── navigation/                    # Navegación
-│           │   │   └── AppNavigation.kt           # Rutas y navegación entre pantallas
-│           │   │
 │           │   ├── ui/                            # Interfaz de usuario
-│           │   │   ├── screens/                   # Pantallas principales
-│           │   │   │   ├── ActivityListScreen.kt   # Pantalla principal (lista)
-│           │   │   │   ├── RegisterActivityScreen.kt  # Formulario de registro
-│           │   │   │   └── WelcomeScreen.kt       # Pantalla de bienvenida
-│           │   │   │
-│           │   │   ├── screens/components/        # Componentes reutilizables
-│           │   │   │   ├── ActivityCard.kt        # Tarjeta de actividad
-│           │   │   │   └── EmptyStateView.kt      # Vista cuando no hay actividades
-│           │   │   │
-│           │   │   └── theme/                     # Tema y estilos
-│           │   │       ├── Color.kt               # Paleta de colores
-│           │   │       ├── Theme.kt               # Configuración del tema
-│           │   │       └── Type.kt                # Tipografía
+│           │   │   ├── fragments/                 # Fragments
+│           │   │   │   ├── ListFragment.kt        # Fragment de lista de actividades
+│           │   │   │   └── RegisterFragment.kt     # Fragment de registro
+│           │   │   ├── adapter/                   # Adaptadores
+│           │   │   │   └── ActivityAdapter.kt      # Adaptador para RecyclerView
+│           │   │   └── AboutActivity.kt           # Activity secundaria (Intents)
 │           │   │
 │           │   ├── viewmodel/                     # Lógica de negocio
 │           │   │   ├── ActivityViewModel.kt      # Maneja actividades y estado
@@ -211,7 +220,20 @@ ActividadesDiarias/
 │           │   │
 │           │   └── MainActivity.kt                # Punto de entrada de la app
 │           │
-│           └── res/                               # Recursos (imágenes, colores, etc.)
+│           └── res/                               # Recursos
+│               ├── layout/                        # Layouts XML
+│               │   ├── activity_main.xml
+│               │   ├── fragment_list.xml
+│               │   ├── fragment_register.xml
+│               │   ├── item_activity.xml
+│               │   └── activity_about.xml
+│               ├── navigation/                    # Navigation Graph
+│               │   └── nav_graph.xml
+│               ├── values/                        # Valores (colores, strings, temas)
+│               │   ├── colors.xml
+│               │   └── themes.xml
+│               └── values-night/                  # Tema oscuro
+│                   └── themes.xml
 │
 └── gradle/                                        # Configuración de Gradle
     └── libs.versions.toml                        # Versiones de dependencias
@@ -221,44 +243,55 @@ ActividadesDiarias/
 
 - **`data/`**: Aquí va todo lo relacionado con almacenamiento (bases de datos, APIs, preferencias)
 - **`model/`**: Define las estructuras de datos (como las "clases" que representan objetos)
-- **`ui/`**: Todo lo visual (pantallas, componentes, temas)
+- **`ui/fragments/`**: Los Fragments que muestran las pantallas principales
+- **`ui/adapter/`**: El adaptador que conecta los datos con el RecyclerView
 - **`viewmodel/`**: La "lógica de negocio" - procesa datos y prepara información para la UI
-- **`navigation/`**: Controla cómo navegas entre pantallas
+- **`res/layout/`**: Los archivos XML que definen cómo se ven las pantallas
+- **`res/navigation/`**: Define cómo navegas entre Fragments
 
-> 💡 **Tip para estudiantes**: Esta estructura sigue el patrón **MVVM** (Model-View-ViewModel), que es el estándar en Android moderno.
+> 💡 **Tip para estudiantes**: Esta estructura sigue el patrón **MVVM** (Model-View-ViewModel), que es el estándar en Android moderno. Además, cumple con los requisitos del módulo de arquitectura y ciclo de vida.
 
 ## 🎓 Conceptos de Programación Aplicados
 
-Este proyecto es excelente para aprender:
+Este proyecto es excelente para aprender y cumple con los requisitos del módulo:
 
-### Para Principiantes
-- ✅ **Kotlin básico**: Variables, funciones, clases
-- ✅ **Compose básico**: @Composable, Column, Row, Text
-- ✅ **Estado**: remember, mutableStateOf
-- ✅ **Navegación**: Cómo pasar de una pantalla a otra
+### Arquitectura y Componentes Android
+- ✅ **Fragments**: Implementación con ListFragment y RegisterFragment
+- ✅ **RecyclerView**: Lista eficiente con ListAdapter y DiffUtil
+- ✅ **LiveData**: Manejo reactivo del estado (requisito del módulo)
+- ✅ **MVVM**: Separación de responsabilidades
+- ✅ **ViewModelFactory**: Inyección de dependencias
+- ✅ **Ciclo de vida**: Manejo correcto de Activities y Fragments
 
-### Para Intermedios
-- ✅ **Arquitectura MVVM**: Separación de responsabilidades
-- ✅ **StateFlow**: Programación reactiva
-- ✅ **Corrutinas**: Operaciones asíncronas (suspend, launch)
-- ✅ **DataStore**: Almacenamiento moderno
-- ✅ **Animaciones**: animateFloatAsState, animateContentSize
+### Kotlin y Programación
+- ✅ **Kotlin básico**: Variables, funciones, clases, data classes
+- ✅ **Scope Functions**: apply, let, with, run
+- ✅ **Corrutinas**: Operaciones asíncronas (suspend, launch, viewModelScope)
+- ✅ **Null Safety**: Manejo seguro de valores nulos
 
-### Para Avanzados
-- ✅ **Inyección de dependencias**: ViewModelFactory
-- ✅ **Flows reactivos**: Observar cambios de datos
+### Android Avanzado
+- ✅ **Intents**: Navegación entre Activities con paso de datos
+- ✅ **Bundles**: Paso de parámetros entre componentes
+- ✅ **Permisos**: Gestión de permisos sensibles con Activity Result API
+- ✅ **DataStore**: Almacenamiento moderno y asíncrono
+- ✅ **Navigation Component**: Navegación declarativa entre Fragments
+
+### Material Design
+- ✅ **Material Components**: MaterialButton, MaterialToolbar, TextInputLayout
 - ✅ **Material Design 3**: Sistema de diseño completo
-- ✅ **Compose avanzado**: Modifiers, Layouts personalizados
+- ✅ **Tema personalizado**: Colores y estilos personalizados
+- ✅ **Sistema 8dp Grid**: Espaciado consistente
 
 ## 🔧 Personalización
 
 ### Cambiar los Colores
 
-Los colores están definidos en `ui/theme/Color.kt`:
+Los colores están definidos en `res/values/colors.xml`:
 
-```kotlin
-val BluePrimary = Color(0xFF4A90E2)      // Azul principal
-val MintSecondary = Color(0xFF50E3C2)    // Verde menta
+```xml
+<color name="blue_primary">#4A90E2</color>      <!-- Azul principal -->
+<color name="mint_secondary">#50E3C2</color>    <!-- Verde menta -->
+<color name="background_light">#F9FAFB</color>   <!-- Fondo cálido -->
 ```
 
 Puedes cambiar estos valores hexadecimales para personalizar la app.
@@ -269,10 +302,10 @@ Algunas ideas para extender el proyecto:
 
 - 📅 Agregar fecha de vencimiento a las actividades
 - 🏷️ Sistema de categorías o etiquetas
-- 🔔 Notificaciones recordatorias
 - 📊 Estadísticas (cuántas actividades por día)
-- 🗑️ Eliminar actividades (ya está la función, solo falta la UI)
+- 🗑️ Eliminar actividades (swipe to delete)
 - 💾 Persistencia con Room Database (guardar entre sesiones)
+- 🔍 Búsqueda y filtrado de actividades
 
 ## 🐛 Solución de Problemas Comunes
 
@@ -291,14 +324,20 @@ Algunas ideas para extender el proyecto:
 - Verifica que todas las dependencias estén sincronizadas
 - Limpia el proyecto: **Build > Clean Project**
 
+### "Error con MaterialButton"
+- Asegúrate de que el tema sea `Theme.MaterialComponents` en `themes.xml`
+- Verifica que la dependencia de Material Components esté incluida
+
 ## 📚 Recursos de Aprendizaje
 
 Si estás aprendiendo Android, estos recursos te ayudarán:
 
-- [Documentación oficial de Jetpack Compose](https://developer.android.com/jetpack/compose)
+- [Documentación oficial de Android](https://developer.android.com/)
 - [Codelabs de Android](https://codelabs.developers.google.com/?cat=Android)
 - [Kotlin para Android](https://developer.android.com/kotlin)
 - [Material Design 3](https://m3.material.io/)
+- [Fragments Guide](https://developer.android.com/guide/fragments)
+- [RecyclerView Guide](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 
 ## 🤝 Contribuciones
 
@@ -324,7 +363,7 @@ Este proyecto es de código abierto y está disponible para fines educativos.
 
 ## 🏷️ Tags
 
-`android` `kotlin` `jetpack-compose` `material-design` `mvvm` `android-development` `mobile-app` `compose` `material-you` `android-studio` `kotlin-android` `stateflow` `datastore` `navigation-compose` `android-app` `material-design-3` `android-tutorial` `compose-ui` `android-learning` `bootcamp`
+`android` `kotlin` `material-design` `mvvm` `android-development` `mobile-app` `material-components` `android-studio` `kotlin-android` `livedata` `datastore` `navigation-component` `android-app` `material-design-3` `android-tutorial` `android-learning` `bootcamp` `fragments` `recyclerview` `viewmodel` `architecture` `lifecycle`
 
 ---
 
@@ -332,7 +371,6 @@ Este proyecto es de código abierto y está disponible para fines educativos.
 
 ### ⭐ Si este proyecto te ayudó, ¡dale una estrella! ⭐
 
-**Hecho con ❤️ usando Jetpack Compose**
+**Hecho con ❤️ usando Material Components y MVVM**
 
 </div>
-

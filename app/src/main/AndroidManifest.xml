@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Permiso sensible para demostrar manejo de permisos -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Permiso de almacenamiento (ejemplo mencionado en el documento del encargo) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" 
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"

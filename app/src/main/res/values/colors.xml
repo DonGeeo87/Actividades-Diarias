@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Colores del sistema -->
+    <color name="background_light">#F9FAFB</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="blue_primary">#4A90E2</color>
+    <color name="mint_secondary">#50E3C2</color>
 </resources>

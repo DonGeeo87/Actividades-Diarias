@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.asLiveData
@@ -42,12 +43,22 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Configurar Toolbar
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        binding.toolbar.setNavigationOnClickListener {
+            val intent = Intent(requireActivity(), AboutActivity::class.java).apply {
+                putExtra(AboutActivity.EXTRA_USER_NAME, cachedName)
+            }
+            startActivity(intent)
+        }
+
         binding.rvActivities.adapter = adapter
 
         // Observa las actividades en LiveData para actualizar el RecyclerView en tiempo real
         viewModel.activities.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
-            binding.tvEmpty.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+            binding.llEmpty.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+            binding.rvActivities.visibility = if (list.isEmpty()) View.GONE else View.VISIBLE
         }
 
         // Observa el nombre del usuario desde DataStore (Flow -> LiveData)
@@ -62,13 +73,6 @@ class ListFragment : Fragment() {
 
         binding.fabAdd.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_registerFragment)
-        }
-
-        binding.fabAbout.setOnClickListener {
-            val intent = Intent(requireContext(), AboutActivity::class.java).apply {
-                putExtra(AboutActivity.EXTRA_USER_NAME, cachedName)
-            }
-            startActivity(intent)
         }
     }
 

@@ -47,8 +47,14 @@ class ActivityAdapter(
             // Configurar texto con estilo según estado completado
             tvTitle.text = item.title
             tvDate.text = "${item.date} · ${item.time}"
-            tvDescription.text = item.description.ifEmpty { "Sin descripción" }
-            tvDescription.visibility = if (item.description.isEmpty()) View.GONE else View.VISIBLE
+            
+            // Mostrar descripción solo si existe
+            if (item.description.isNotBlank()) {
+                tvDescription.text = item.description
+                tvDescription.visibility = View.VISIBLE
+            } else {
+                tvDescription.visibility = View.GONE
+            }
             
             // Aplicar estilo visual cuando está completado
             if (item.isCompleted) {

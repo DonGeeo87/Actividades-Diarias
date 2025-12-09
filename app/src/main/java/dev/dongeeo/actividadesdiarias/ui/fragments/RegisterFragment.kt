@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -32,6 +33,12 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Configurar Toolbar
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
 
         binding.btnSave.setOnClickListener {
             val title = binding.etTitle.text?.toString().orEmpty()

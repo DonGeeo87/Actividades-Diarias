@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="6dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,13 +15,16 @@
         android:orientation="horizontal"
         android:padding="16dp">
 
+        <!-- Checkbox con mejor contraste y animación -->
         <CheckBox
             android:id="@+id/cbCompleted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="center_vertical"
             android:focusable="false"
-            android:clickable="true" />
+            android:clickable="true"
+            app:buttonTint="@color/blue_primary" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -27,30 +32,38 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <!-- Título con mejor tipografía -->
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Título"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:lineSpacingExtra="2dp" />
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hoy · 10:00"
-            android:textColor="@android:color/darker_gray"
-            android:layout_marginTop="4dp" />
+            <!-- Fecha con espaciado 8dp -->
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hoy · 10:00"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="8dp" />
 
+            <!-- Descripción con espaciado 8dp -->
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Descripción"
-                android:layout_marginTop="8dp" />
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
-
